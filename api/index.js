@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -22,5 +23,6 @@ app.post('/process', (req, res) => {
     res.json({ word: characters });
 });
 
-// Instead of app.listen(), we export the app for Vercel
-module.exports = app;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
